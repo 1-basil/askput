@@ -1,54 +1,46 @@
 # askput
 
-**askput** is a simple yet powerful Python library for **safe, validated, and interactive console input**.
+**askput** is a lightweight Python library for safe, validated, and interactive console input.
 
-It helps developers avoid repetitive input-validation logic and build **clean CLI workflows** with minimal code.
+It removes repetitive input-validation logic and helps you build clean, readable CLI programs with minimal effort.
 
 ---
 
-## ✨ Why askput?
+## Why askput?
 
 Python’s built-in `input()`:
-- returns only strings
-- has no validation
-- leads to repetitive `try/except` blocks
 
-**askput solves this cleanly.**
+- always returns strings  
+- provides no validation  
+- leads to repeated `try / except` blocks  
+
+askput offers a clean abstraction over these problems while staying simple and dependency-free.
 
 ---
 
-## 🚀 Features
+## Features
 
-- Safe integer and float input with bounds
+- Integer and float input with bounds
 - String length validation
 - Email validation
 - Secure password input
 - Strong password rules
 - Yes/No confirmations
-- Phrase-based confirmation (dangerous actions)
-- Choice / menu selection
-- Pattern (regex) based input
+- Phrase-based confirmation for dangerous actions
+- Menu-based choice selection
+- Regex (pattern) based input
 - Multiple values input
 - Fully tested with `pytest`
 - Zero external dependencies
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 pip install askput
-
-
-from askput import ask
-
-age = ask.int("Enter age", min=18)
-price = ask.float("Enter price", min=0)
-name = ask.string("Enter name", min_len=2)
-email = ask.email("Enter email")
-
-print(age, price, name, email)
-
+```
+```
 
 from askput import ask
 
@@ -58,7 +50,23 @@ name = ask.string("Enter name", min_len=2)
 email = ask.email("Enter email")
 
 print(age, price, name, email)
+```
+```
+```
 
+```
+from askput import ask
+
+age = ask.int("Enter age", min=18)
+price = ask.float("Enter price", min=0)
+name = ask.string("Enter name", min_len=2)
+email = ask.email("Enter email")
+
+print(age, price, name, email)
+
+```
+```
+from askput import ask
 
 password = ask.password("Enter password")
 strong_password = ask.password_strong("Create strong password")
@@ -66,35 +74,44 @@ strong_password = ask.password_strong("Create strong password")
 confirm = ask.confirm("Continue?")
 delete = ask.confirm_phrase("Type DELETE to continue", "DELETE")
 
+```
+
+```
+from askput import ask
 
 role = ask.choice(
     "Select role",
     ["Admin", "User", "Guest"]
 )
 
-print("Selected:", role)
-
+print("Selected role:", role)
+```
+```
+from askput import ask
 
 code = ask.pattern("Enter code", r"^[A-Z]{3}\d{3}$")
 tags = ask.multi("Enter tags (comma separated)")
 
 print(code, tags)
-
-
+```
+```
 from askput import ask
 
 role = ask.choice("Role", ["Admin", "User"])
 age = ask.int("Age", min=18)
 password = ask.password_strong("Password")
-confirm = ask.confirm("Submit form?")
 
-if confirm:
+if ask.confirm("Submit form?"):
     print("Form submitted")
+```
+```
+from askput import ask
 
+role = ask.choice("Role", ["Admin", "User"])
+age = ask.int("Age", min=18)
+password = ask.password_strong("Password")
 
-askput is fully tested using pytest.
+if ask.confirm("Submit form?"):
+    print("Form submitted")
+```
 
-pytest
-
-
-All tests must pass before every release.
