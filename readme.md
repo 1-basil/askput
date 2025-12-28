@@ -41,9 +41,9 @@ askput offers a clean abstraction over these problems while staying simple and d
 pip install askput
 ```
 
-#Usages
+Usages
 ---
-##Basic Usage
+Basic Usage
 ---
 ```python
 
@@ -56,7 +56,7 @@ email = ask.email("Enter email")
 
 print(age, price, name, email)
 ```
-##Passwords and Confirmations
+Passwords and Confirmations
 ---
 ```python
 from askput import ask
@@ -79,7 +79,7 @@ confirm = ask.confirm("Continue?")
 delete = ask.confirm_phrase("Type DELETE to continue", "DELETE")
 
 ```
-##Choice / Menu Input
+Choice / Menu Input
 ---
 
 ```python
@@ -102,7 +102,7 @@ tags = ask.multi("Enter tags (comma separated)")
 
 print(code, tags)
 ```
-##Example: Simple CLI Flow
+Example: Simple CLI Flow
 ---
 ```python
 from askput import ask
@@ -114,14 +114,13 @@ password = ask.password_strong("Password")
 if ask.confirm("Submit form?"):
     print("Form submitted")
 ```
-##Testing
+Testing
 ---
 askput is fully tested using pytest.
 
-pytest
 ```bash
 pytest
 ```
 
-All tests must pass before every release.
+All tests are before every release.
 
