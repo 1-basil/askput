@@ -37,10 +37,15 @@ askput offers a clean abstraction over these problems while staying simple and d
 
 ## Installation
 
-```bash
+``` bash
 pip install askput
 ```
-```
+
+#Usages
+---
+##Basic Usage
+---
+```python
 
 from askput import ask
 
@@ -51,10 +56,9 @@ email = ask.email("Enter email")
 
 print(age, price, name, email)
 ```
-```
-```
-
-```
+##Passwords and Confirmations
+---
+```python
 from askput import ask
 
 age = ask.int("Enter age", min=18)
@@ -65,7 +69,7 @@ email = ask.email("Enter email")
 print(age, price, name, email)
 
 ```
-```
+```python
 from askput import ask
 
 password = ask.password("Enter password")
@@ -75,8 +79,10 @@ confirm = ask.confirm("Continue?")
 delete = ask.confirm_phrase("Type DELETE to continue", "DELETE")
 
 ```
+##Choice / Menu Input
+---
 
-```
+```python
 from askput import ask
 
 role = ask.choice(
@@ -86,7 +92,9 @@ role = ask.choice(
 
 print("Selected role:", role)
 ```
-```
+##Pattern and Multiple Input
+---
+```python
 from askput import ask
 
 code = ask.pattern("Enter code", r"^[A-Z]{3}\d{3}$")
@@ -94,7 +102,9 @@ tags = ask.multi("Enter tags (comma separated)")
 
 print(code, tags)
 ```
-```
+##Example: Simple CLI Flow
+---
+```python
 from askput import ask
 
 role = ask.choice("Role", ["Admin", "User"])
@@ -104,14 +114,14 @@ password = ask.password_strong("Password")
 if ask.confirm("Submit form?"):
     print("Form submitted")
 ```
-```
-from askput import ask
+##Testing
+---
+askput is fully tested using pytest.
 
-role = ask.choice("Role", ["Admin", "User"])
-age = ask.int("Age", min=18)
-password = ask.password_strong("Password")
-
-if ask.confirm("Submit form?"):
-    print("Form submitted")
+pytest
+```bash
+pytest
 ```
+
+All tests must pass before every release.
 
